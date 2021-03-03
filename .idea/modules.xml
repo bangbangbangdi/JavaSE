@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Demo01_SnakeGame/Demo01_SnakeGame.iml" filepath="$PROJECT_DIR$/Demo01_SnakeGame/Demo01_SnakeGame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Demo02_SnakeGame/Demo02_SnakeGame.iml" filepath="$PROJECT_DIR$/Demo02_SnakeGame/Demo02_SnakeGame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavaSE.iml" filepath="$PROJECT_DIR$/JavaSE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lambda/Lambda.iml" filepath="$PROJECT_DIR$/Lambda/Lambda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netdemo/netdemo.iml" filepath="$PROJECT_DIR$/netdemo/netdemo.iml" />
+    </modules>
+  </component>
+</project>
