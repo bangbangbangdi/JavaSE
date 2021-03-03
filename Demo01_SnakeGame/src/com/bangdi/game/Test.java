@@ -8,5 +8,6 @@ public class Test {
 
         System.out.println(((int) (Math.random()*30+1)*25));//[25,750]
         System.out.println(((int) (Math.random()*22+7)*25));
+        System.out.println("测试git");
     }
 }
