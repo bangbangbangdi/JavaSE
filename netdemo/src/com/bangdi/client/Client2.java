@@ -10,6 +10,7 @@ public class Client2 {
         Socket socket = new Socket("127.0.0.1", 10000);
         OutputStream outputStream = socket.getOutputStream();
         outputStream.write("bangdi".getBytes());
+
         InputStream inputStream = socket.getInputStream();
         byte[] bytes = new byte[1024];
         int length = inputStream.read(bytes);

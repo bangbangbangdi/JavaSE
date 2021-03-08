@@ -9,10 +9,13 @@ import java.net.Socket;
 
 public class PicServer {
     public static void main(String[] args) throws IOException {
+        //ServerSocket在实例化时要指定具体的端口
         ServerSocket serverSocket = new ServerSocket(10086);
+        //在这个具体的ServerSocket下再创建Socket
         Socket server = serverSocket.accept();
+        //从具体的socket上创建出输入流
         InputStream inputStream = server.getInputStream();
-        FileOutputStream fileOutputStream = new FileOutputStream("netdemo/copy.jpg");
+        FileOutputStream fileOutputStream = new FileOutputStream("./netdemo/copy.jpg");
         int length = -1;
         byte[] bytes = new byte[1024];
         while ((length = inputStream.read(bytes)) != -1) {
