@@ -29,6 +29,7 @@ public class Test {
             System.out.println(stu);
         }
     }
+
     public static void findByScore(ArrayList<Student> students) {
         ArrayList<Student> list = new ArrayList<>();
         for (Student stu : students) {

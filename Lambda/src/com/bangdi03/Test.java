@@ -12,8 +12,29 @@ public class Test {
         list.add(new Student("xiaoming", 19, 70));
         list.add(new Student("xiaoxue", 25, 85));
         list.add(new Student("nini", 20, 90));
+
+        getByFilter(list, new StudentFilter() {
+            @Override
+            public boolean compare(Student student) {
+                return student.getAge() > 15;
+            }
+        });
+        getByFilter(list, new StudentFilter() {
+            @Override
+            public boolean compare(Student student) {
+                return student.getScore() > 80;
+            }
+        });
+        System.out.println("---------------");
+        getByFilter(list, new StudentFilter() {
+            @Override
+            public boolean compare(Student student) {
+                return student.getAge() > 23 && student.getScore() > 80;
+            }
+        });
     }
-    public static void findByAge(ArrayList<Student> students, StudentFilter filter) {
+
+    public static void getByFilter(ArrayList<Student> students, StudentFilter filter) {
         ArrayList<Student> list = new ArrayList<>();
         for (Student stu : students) {
             if (filter.compare(stu)) {
