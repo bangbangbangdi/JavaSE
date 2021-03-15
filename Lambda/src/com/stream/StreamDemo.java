@@ -54,11 +54,14 @@ public class StreamDemo {
         //求出结果集中所有偶数的和
         System.out.println(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8).stream().filter(x -> x % 2 == 0).mapToInt(x -> x).sum());
         //求集合的最大值
-        Stream<Integer> stream = Arrays.asList(1, 2, 3, 4, 5, 6).stream();
-        Optional<Integer> max = stream.max((a, b) -> a - b);
-        System.out.println(max.get());
+        System.out.println("元素最大值为" + Arrays.asList(1, 2, 3, 4, 5, 6).stream().max((a, b) -> a - b).get());
         //求集合的最小值
-        System.out.println(Arrays.asList(-100, 1, 2, 3, 4, 5, 6).stream().min((a, b) -> a - b).get());
+        System.out.println("元素最小值为" + Arrays.asList(-100, 1, 2, 3, 4, 5, 6).stream().min((a, b) -> a - b).get());
+        //求集合的元素总数
+        System.out.println("元素的总数为：" + Arrays.asList(1, 2, 3, 4, 5).stream().count());
+        //求元素的平均数
+        System.out.println("元素的平均数为：" + Arrays.asList(1, 2, 3, 4, 5).stream().mapToInt(x -> x).average().getAsDouble());
+
 
         //求stream的任意一个值
         List<Integer> list = Arrays.asList(-2, 1, 2, 3, 4, 5, 6);
@@ -87,6 +90,13 @@ public class StreamDemo {
         Set<Integer> collect = list.stream().filter(x -> x % 2 == 0).collect(Collectors.toSet());
         collect.forEach(System.out::println);
 
+        //将流变成Array
+        Object[] objects = Arrays.asList(4, 3, 2, 1).stream().toArray();
+        for (int i = 0; i < objects.length; i++) {
+            System.out.println("将Stream转成Array" + (int) objects[i]);
+        }
+
+
         //去重操作
         System.out.println("-----------");
         Arrays.asList(1, 2, 3, 3, 3, 2, 4, 4, 4, 52, 1, 3).stream().distinct().forEach(System.out::println);
@@ -95,7 +105,22 @@ public class StreamDemo {
 
         //打印20-30这样的集合数据
         System.out.println("---------");
-        Stream.iterate(1,x->x+1).limit(50).skip(20).limit(10).forEach(System.out::println);
+        Stream.iterate(1, x -> x + 1).limit(50).skip(20).limit(10).forEach(System.out::println);
 
+        //对字符串进行求和
+        String str = "11,22,33,44,55";
+        System.out.println(Stream.of(str.split(",")).mapToInt(x -> Integer.valueOf(x)).sum());
+        System.out.println(Stream.of(str.split(",")).mapToInt(Integer::valueOf).sum());
+        System.out.println(Stream.of(str.split(",")).map(x -> Integer.valueOf(x)).mapToInt(x -> x).sum());
+        System.out.println(Stream.of(str.split(",")).map(Integer::valueOf).mapToInt(x -> x).sum());
+
+        //创建一组自定义对象
+        String str2 = "Java,Scala,Python";
+        Stream.of(str2.split(",")).map(x -> new Person(x)).forEach(System.out::println);
+        Stream.of(str2.split(",")).map(Person::new).forEach(System.out::println);
+        Stream.of(str2.split(",")).map(x -> Person.build(x)).forEach(System.out::println);
+        Stream.of(str2.split(",")).map(Person::build).forEach(System.out::println);
+
+        //
     }
 }
